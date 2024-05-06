@@ -63,8 +63,10 @@ query = """
       AND date_of_birth IS NOT NULL
       AND selected_packages IS NOT NULL
       AND credit_score IS NOT NULL
-      AND date(u.update_date) = current_date() - 1
-"""
+      AND (
+            date(u.update_date) > current_date() - 1 
+            OR
+            u.user_id not in (select user_id from `price_comparison.competitor_prices_by_user`))"""
 
 
 async def run_main():

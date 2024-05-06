@@ -1,0 +1,25 @@
+{
+  "steps": [
+    {
+      "name": "gcr.io/google.com/cloudsdktool/cloud-sdk",
+      "args": [
+        "gcloud",
+        "functions",
+        "deploy",
+        "populate-pricing-comparison-data",
+        "--entry-point=main",
+        "--region=us-central1",
+        "--source=.",
+        "--memory=256MB",
+        "--trigger-http",
+        "--runtime=python39",
+        "--timeout=540s"
+      ],
+      "waitFor": [
+        "-"
+      ]
+    }
+  ],
+  "substitutions": {
+  }
+}
